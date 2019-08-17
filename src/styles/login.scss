@@ -1,0 +1,152 @@
+$bg: rgb(245, 245, 245);
+$dark_gray: rgb(18, 29, 37);
+$light_gray: rgb(18, 29, 37);
+.login-container {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: $bg;
+  .el-form-item {
+    margin-bottom: 25px;
+  }
+  .login-card {
+    border-radius: 8px;
+    .el-card__body {
+      padding: 40px;
+    }
+  }
+  .login-form {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 540px;
+    max-width: 100%;
+    padding: 35px 35px 15px 35px;
+    margin: 120px auto;
+    .login-card {
+      .login-tab {
+        @include flexBox;
+        @include alignCenter;
+        padding: 0 20px 20px;
+        .tab-item {
+          @include flex1;
+          text-align: center;
+          font-size: 16px;
+          cursor: pointer;
+          &:hover {
+            color: #121d25 !important;
+          }
+        }
+      }
+      .login-input-item {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        color: #454545;
+        position: relative;
+        .el-input {
+          display: inline-block;
+          width: 100%;
+          padding-left: 15px;
+          margin-bottom: 2px;
+          input {
+            background: transparent;
+            border: 0px;
+            -webkit-appearance: none;
+            border-radius: 0px;
+            color: $light_gray;
+            padding-left: 0;
+            &:-webkit-autofill {
+              -webkit-box-shadow: 0 0 0px 1000px #fff inset !important;
+              -webkit-text-fill-color: $light_gray !important;
+              color: $light_gray !important;
+              caret-color:$light_gray !important;
+            }
+            &::-moz-placeholder{color:rgb(204, 204, 204)} //Firefox
+            &::-webkit-input-placeholder{color:rgb(204, 204, 204)} //Chrome,Safari
+            &:-ms-input-placeholder{color:rgb(204, 204, 204)} // ie
+          }
+        }
+        .svg-container {
+          position: absolute;
+          top: 0;
+          left: 0;
+          padding: 0 15px;
+          color: $dark_gray;
+          vertical-align: middle;
+          display: inline-block;
+        }
+        .code {
+          position: absolute;
+          right: 10px;
+          top: 2px;
+          font-size: 14px;
+          color: #121d25;
+          cursor: pointer;
+          user-select: none;
+        }
+      }
+      .to-login {
+        @include flexBox;
+        @include justifyEnd;
+        font-size: 14px;
+        margin-top: 8px;
+        .btn {
+          cursor: pointer;
+          &:hover {
+            color: #409EFF;
+          }
+        }
+      }
+      .accept-agreement {
+        margin-bottom: 20px;
+        font-size: 14px;
+        .agreement {
+          cursor: pointer;
+          &:hover {
+            color: #409EFF;
+          }
+        }
+      }
+      .psw {
+        margin-bottom: 0
+      }
+      .forget-psw {
+        @include flexBox;
+        @include justifyEnd;
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 8px;
+        margin-bottom: 22px;
+        &:hover {
+          color: #409EFF;
+        }
+      }
+    }
+  }
+  .tips {
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 10px;
+    span {
+      &:first-of-type {
+        margin-right: 16px;
+      }
+    }
+  }
+  .title {
+    font-size: 32px;
+    color: $light_gray;
+    margin: 0px auto 40px auto;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  .show-pwd {
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    font-size: 16px;
+    color: $dark_gray;
+    cursor: pointer;
+    user-select: none;
+  }
+}

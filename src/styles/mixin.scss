@@ -1,0 +1,211 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin scrollBar {
+  &::-webkit-scrollbar-track-piece {
+    background: #d3dce6;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #99a9bf;
+    border-radius: 20px;
+  }
+}
+
+@mixin relative {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* 背景自适应容器大小 */
+@mixin bg-cover($url) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-position: 0 center;
+}
+
+/* flex布局相关 */
+@mixin flexBox {
+  display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+  display: -moz-box; /* Firefox 17- */
+  display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+  display: -moz-flex; /* Firefox 18+ */
+  display: -ms-flexbox; /* IE 10 */
+  display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+}
+
+@mixin flex1 {
+  -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+  -moz-flex: 1;
+  -moz-box-flex: 1;         /* OLD - Firefox 19- */
+  -webkit-flex: 1;          /* Chrome */
+  -ms-flex: 1;              /* IE 10 */
+  flex: 1;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+/* 主轴居中 */
+@mixin justifyCenter {
+  -webkit-justify-content: center;
+  -webkit-box-pack: center;
+  -moz-justify-content: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+/* 主轴两端对齐 */
+@mixin justifyBetween {
+  -webkit-justify-content: space-between;
+  -webkit-box-pack: justify;
+  -moz-justify-content: space-between;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+@mixin justifyAround {
+  -webkit-justify-content: space-around;
+  -webkit-box-pack: space-around;
+  -moz-justify-content: space-around;
+  -moz-box-pack: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+}
+
+/* 主轴end对齐 */
+@mixin justifyEnd {
+  -webkit-justify-content: flex-end;
+  -webkit-box-pack: end;
+  -moz-justify-content: flex-end;
+  -moz-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+/* 主轴start对齐 */
+@mixin justifyStart {
+  -webkit-justify-content: flex-start;
+  -webkit-box-pack: start;
+  -moz-justify-content: flex-start;
+  -moz-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+/* 侧轴居中 */
+@mixin alignCenter {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -moz-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+/* 侧轴start对齐 */
+@mixin alignStart {
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -moz-align-items: start;
+  -moz-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+}
+
+/* 侧轴底部对齐  */
+@mixin alignEnd {
+  -webkit-align-items: flex-end;
+  -webkit-box-align: end;
+  -moz-align-items: flex-end;
+  -moz-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}
+
+/* 侧轴文本基线对齐 */
+@mixin alignBaseline {
+  -webkit-box-align: baseline;
+  -moz-align-items: baseline;
+  -webkit-align-items: baseline;
+  align-items: baseline;
+}
+
+/* 侧轴上下对齐并铺满 */
+@mixin alignStretch {
+  -webkit-box-align: stretch;
+  -moz-align-items: stretch;
+  -webkit-align-items: stretch;
+  align-items: stretch;
+}
+
+/* 主轴从上到下 */
+@mixin directionColumn {
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -moz-box-orient: vertical;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+/* 主轴从左到右 */
+@mixin directionRow {
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -moz-box-orient: horizontal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+/* 主轴从右到左 */
+@mixin directionRowReverse {
+  -webkit-box-pack: end;
+  -webkit-box-direction: reverse;
+  -webkit-box-orient: horizontal;
+  -moz-flex-direction: row-reverse;
+  -webkit-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+/* 是否允许子元素伸缩 */
+@mixin flexGrow {
+  -webkit-box-flex: 1.0;
+  -moz-flex-grow: 1;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+}
+
+@mixin flexWrap {
+  /* 09版 */  
+  /*-webkit-box-lines: multiple;*/  
+  /* 12版 */  
+  -webkit-flex-wrap: wrap;  
+  -moz-flex-wrap: wrap;  
+  -ms-flex-wrap: wrap;  
+  -o-flex-wrap: wrap;  
+  flex-wrap: wrap;  
+}
+
+/* 子元素的显示次序 */
+@mixin flexOrder {
+  -webkit-box-ordinal-group: 1;
+  -moz-order: 1;
+  -webkit-order: 1;
+  order: 1;
+}
