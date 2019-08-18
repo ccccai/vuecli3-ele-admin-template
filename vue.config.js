@@ -7,7 +7,7 @@ function resolve(dir) {
 module.exports = {
   assetsDir: 'assets', // 静态资源文件夹
   devServer: {
-    port: 9533 // 端口号
+    port: 9566 // 端口号
   },
   chainWebpack: config => {
     config.module

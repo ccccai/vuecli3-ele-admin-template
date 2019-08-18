@@ -1,118 +1,116 @@
 /* 登录 */
 <template>
-  <div>
-    <div class="login-container">
-      <el-form
-        ref="loginForm"
-        :model="loginForm"
-        :rules="activeTab===1 ? loginByPswRules : loginByMsgRules"
-        class="login-form"
-        autocomplete="on"
-        label-position="left"
-      >
-        <div class="title">
-          欢迎登录后台管理系统
-        </div>
-        <el-card shadow="hover" class="login-card">
-          <div class="login-tab">
-            <div
-              v-for="item in tabList"
-              :key="item.value"
-              :style="{'color': activeTab === item.value ? '#121d25' : '#ccc'}"
-              class="tab-item"
-              @click="handleTab(item.value)"
-            >
-              {{ item.name }}
-            </div>
+  <div class="login-container">
+    <el-form
+      ref="loginForm"
+      :model="loginForm"
+      :rules="activeTab===1 ? loginByPswRules : loginByMsgRules"
+      class="login-form"
+      autocomplete="on"
+      label-position="left"
+    >
+      <div class="title">
+        欢迎登录后台管理系统
+      </div>
+      <el-card shadow="hover" class="login-card">
+        <div class="login-tab">
+          <div
+            v-for="item in tabList"
+            :key="item.value"
+            :style="{'color': activeTab === item.value ? '#121d25' : '#ccc'}"
+            class="tab-item"
+            @click="handleTab(item.value)"
+          >
+            {{ item.name }}
           </div>
-          <template v-if="activeTab===1">
-            <el-form-item prop="user" class="login-input-item">
-              <span class="svg-container">
-                <svg-icon icon-class="user" />
-              </span>
-              <el-input
-                v-model="loginForm.user"
-                autocomplete="on"
-                name="user"
-                type="text"
-                placeholder="手机号/用户名"
-                style="padding-left: 45px"
-              />
-            </el-form-item>
-            <el-form-item prop="password" class="login-input-item">
-              <span class="svg-container">
-                <svg-icon icon-class="password" />
-              </span>
-              <el-input
-                v-model="loginForm.password"
-                autocomplete="on"
-                show-password
-                name="password"
-                placeholder="请输入密码"
-                style="padding-left: 45px"
-                @paste.native.capture.prevent="() => {return}"
-                @copy.native.capture.prevent="() => {return}"
-                @cut.native.capture.prevent="() => {return}"
-                @keyup.enter.native="handleLogin"
-              />
-            </el-form-item>
-            <div class="forget-psw" @click="$router.push({name: 'ResetPsw'})">
-              忘记密码？
-            </div>
-          </template>
-          <template v-if="activeTab===2">
-            <el-form-item prop="phoneNumber" class="login-input-item">
-              <span class="svg-container">
-                <svg-icon icon-class="user" />
-              </span>
-              <el-input
-                v-model="loginForm.phoneNumber"
-                autocomplete="on"
-                name="phoneNumber"
-                type="text"
-                placeholder="手机号"
-                style="padding-left: 45px"
-              />
-            </el-form-item>
-            <el-form-item prop="code" class="login-input-item">
-              <span class="svg-container">
-                <svg-icon icon-class="password" />
-              </span>
-              <el-input
-                v-model="loginForm.code"
-                autocomplete="off"
-                type="number"
-                name="code"
-                placeholder="验证码"
-                maxlength="4"
-                style="padding-left: 45px"
-                @keyup.enter.native="handleLogin"
-              />
-              <span :style="{ cursor: isOvertime ? 'default' : 'pointer'}" class="code" @click="sendMessage">{{ word }}</span>
-            </el-form-item>
-          </template>
-          <el-form-item>
-            <el-button
-              :loading="loading"
-              type="primary"
-              style="width:100%;"
-              @click.native.prevent="handleLogin"
-            >
-              登 录
-            </el-button>
+        </div>
+        <template v-if="activeTab===1">
+          <el-form-item prop="user" class="login-input-item">
+            <span class="svg-container">
+              <svg-icon icon-class="user" />
+            </span>
+            <el-input
+              v-model="loginForm.user"
+              autocomplete="on"
+              name="user"
+              type="text"
+              placeholder="手机号/用户名"
+              style="padding-left: 45px"
+            />
           </el-form-item>
-          <el-form-item>
-            <el-button
-              :loading="loading"
-              style="width:100%;"
-              @click="$router.push({name: 'Register'})"
-            >
-              立 即 注 册
-            </el-button>
+          <el-form-item prop="password" class="login-input-item">
+            <span class="svg-container">
+              <svg-icon icon-class="password" />
+            </span>
+            <el-input
+              v-model="loginForm.password"
+              autocomplete="on"
+              show-password
+              name="password"
+              placeholder="请输入密码"
+              style="padding-left: 45px"
+              @paste.native.capture.prevent="() => {return}"
+              @copy.native.capture.prevent="() => {return}"
+              @cut.native.capture.prevent="() => {return}"
+              @keyup.enter.native="handleLogin"
+            />
           </el-form-item>
-        </el-card>
-      </el-form>
-    </div>
+          <div class="forget-psw" @click="$router.push({name: 'ResetPsw'})">
+            忘记密码？
+          </div>
+        </template>
+        <template v-if="activeTab===2">
+          <el-form-item prop="phoneNumber" class="login-input-item">
+            <span class="svg-container">
+              <svg-icon icon-class="user" />
+            </span>
+            <el-input
+              v-model="loginForm.phoneNumber"
+              autocomplete="on"
+              name="phoneNumber"
+              type="text"
+              placeholder="手机号"
+              style="padding-left: 45px"
+            />
+          </el-form-item>
+          <el-form-item prop="code" class="login-input-item">
+            <span class="svg-container">
+              <svg-icon icon-class="password" />
+            </span>
+            <el-input
+              v-model="loginForm.code"
+              autocomplete="off"
+              type="number"
+              name="code"
+              placeholder="验证码"
+              maxlength="4"
+              style="padding-left: 45px"
+              @keyup.enter.native="handleLogin"
+            />
+            <span :style="{ cursor: isOvertime ? 'default' : 'pointer'}" class="code" @click="sendMessage">{{ word }}</span>
+          </el-form-item>
+        </template>
+        <el-form-item>
+          <el-button
+            :loading="loading"
+            type="primary"
+            style="width:100%;"
+            @click.native.prevent="handleLogin"
+          >
+            登 录
+          </el-button>
+        </el-form-item>
+        <el-form-item>
+          <el-button
+            :loading="loading"
+            style="width:100%;"
+            @click="$router.push({name: 'Register'})"
+          >
+            立 即 注 册
+          </el-button>
+        </el-form-item>
+      </el-card>
+    </el-form>
   </div>
 </template>
 

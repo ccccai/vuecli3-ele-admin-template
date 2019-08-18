@@ -59,7 +59,7 @@
               我已阅读并接受
             </el-checkbox>
             <router-link :to="{name:'Agreement'}" tag="a" target="_blank" class="agreement">
-              《奔腾开放云平台用户协议》
+              《后台管理系统用户协议》
             </router-link>
           </div>
           <el-form-item style="margin-bottom:0">
