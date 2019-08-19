@@ -182,9 +182,6 @@ export default {
       immediate: true
     }
   },
-  created() {
-    this.$store.commit('SET_DEFAULT_PAGE_PATH', '')
-  },
   methods: {
     sendMessage() {
       if (this.isOvertime) {
