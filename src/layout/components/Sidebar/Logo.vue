@@ -61,8 +61,8 @@ export default {
   overflow: hidden;
 
   .collapse-logo {
-    width: 51px !important;
-    height: 30px !important;
+    width: 30px !important;
+    height: 25px !important;
     padding-right: 0!important;
   }
 

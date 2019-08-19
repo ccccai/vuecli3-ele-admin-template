@@ -13,7 +13,7 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
   const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1')
   // 获取键名为modulePath的文件内容
   const value = modulesFiles(modulePath)
-  // 将文件中的默认到处模块赋值给迭代对象modules
+  // 将文件中的默认导出模块赋值给迭代对象modules
   modules[moduleName] = value.default
   // 返回迭代对象modules
   return modules
