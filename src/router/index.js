@@ -42,6 +42,23 @@ export const constantRoutes = [
     path: '/404',
     component: () => import('@/views/404'),
     hidden: true
+  },
+  {
+    path: '/home',
+    component: () => import('@/layout'),
+    hidden: true,
+    children: [
+      {
+        path: 'home',
+        name: 'Home',
+        component: resolve => void require(['@/views/homepage/index'], resolve),
+        meta: {
+          title: '主页',
+          keepAlive: false, // 该字段表示该页面需要缓存
+          isBack: false // 用于判断上一个页面是哪个
+        }
+      }
+    ]
   }
 ]
 

@@ -27,7 +27,7 @@
         <template v-if="activeTab===1">
           <el-form-item prop="user" class="login-input-item">
             <span class="svg-container">
-              <svg-icon icon-class="user" />
+              <svg-icon icon-class="account" />
             </span>
             <el-input
               v-model="loginForm.user"
@@ -62,7 +62,7 @@
         <template v-if="activeTab===2">
           <el-form-item prop="phoneNumber" class="login-input-item">
             <span class="svg-container">
-              <svg-icon icon-class="user" />
+              <svg-icon icon-class="account" />
             </span>
             <el-input
               v-model="loginForm.phoneNumber"
@@ -115,7 +115,7 @@
 </template>
 
 <script>
-import { isvalidPhoneNumber, isvalidCode, isvalidPassword } from '@/assets/utils/validate'
+import { isvalidPhoneNumber, isvalidCode } from '@/assets/utils/validate'
 export default {
   name: 'Login',
   data() {
@@ -127,8 +127,8 @@ export default {
       }
     }
     const validatePass = (rule, value, callback) => {
-      if (!isvalidPassword(value)) {
-        callback(new Error('密码格式不正确'))
+      if (value.length < 6) {
+        callback(new Error('密码不少于6位'))
       } else {
         callback()
       }

@@ -85,39 +85,47 @@ function httpRequest(options = {}) {
     })
   }
 
-  requestMethods(options).then(response => {
-    // 成功返回结果的逻辑。根据接口定义的数据返回格式 修改判断条件
-    const data = response.data
-    if (data.resultCode === '1' || data.resultCode === 1) {
-      // 成功
-      const result = options.returnFullData ? data : data.data // 返回完整数据结构还是只返回有效数据
-      options.success(result)
-    } else {
-      if (!options.hideErrorMsg) {
-        // 失败
-        let errorMsg = data.hasOwnProperty('resultMessage') ? data.resultMessage : '数据解析错误'
-        switch (data.resultCode) {
-          case '401':
-            errorMsg = '暂无操作权限'
-            break
+  try {
+    requestMethods(options).then(response => {
+      // 成功返回结果的逻辑。根据接口定义的数据返回格式 修改判断条件
+      const data = response.data
+      if (data.resultCode === '1' || data.resultCode === 1) {
+        // 成功
+        const result = options.returnFullData ? data : data.data // 返回完整数据结构还是只返回有效数据
+        options.success(result)
+      } else {
+        if (!options.hideErrorMsg) {
+          // 失败
+          let errorMsg = data.hasOwnProperty('resultMessage') ? data.resultMessage : '数据解析错误'
+          switch (data.resultCode) {
+            case '401':
+              errorMsg = '暂无操作权限'
+              break
+          }
+          Message.closeAll()
+          Message({
+            message: errorMsg,
+            type: 'error',
+            customClass: 'errorloginwidth',
+            duration: 3000
+          })
         }
-        Message.closeAll()
-        Message({
-          message: errorMsg,
-          type: 'error',
-          customClass: 'errorloginwidth',
-          duration: 3000
-        })
+        options.error(data)
       }
-      options.error(data)
-    }
-    if (!options.noLoading) {
-      // loading完毕
-      loading.close()
-    }
-  }).catch(e => {
-    options.error(e.response)
-  })
+      if (!options.noLoading) {
+        // loading完毕
+        loading.close()
+      }
+    }).catch(e => {
+      options.error(e.response)
+    })
+  } catch (e) {
+    Message({
+      message: 'Axios请求出错！',
+      type: 'error',
+      duration: 3 * 1000
+    })
+  }
 }
 export default {
   httpRequest
