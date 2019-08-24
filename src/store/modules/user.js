@@ -4,15 +4,16 @@ import Request from '@/assets/http'
 const user = {
   state: {
     token: '',
-    name: ''
+    name: '',
+    roles: ''
   },
   mutations: {
     SET_TOKEN: (state, data) => {
       state.token = data
-      localStorage.setItem('ADMIN_TOKEN', data)
     },
-    SET_NAME: (state, data) => {
-      state.name = data
+    SET_USER_INFO: (state, data) => {
+      state.name = data.name || ''
+      state.roles = data.roles || []
     }
   },
   actions: {
@@ -23,8 +24,8 @@ const user = {
           url: API.Login,
           params: params,
           success: data => {
-            console.log(111)
-            commit('SET_TOKEN', data.token)
+            localStorage.setItem('ADMIN_TOKEN', data.token)
+            commit('SET_USER_INFO', data.userInfo)
             resolve(data)
           },
           error: err => {
@@ -40,8 +41,9 @@ const user = {
 
     ResetToken({ commit }) {
       return new Promise(resolve => {
+        console.log(1111)
         commit('SET_TOKEN', '')
-        commit('SEI_NAME', '')
+        commit('SET_USER_INFO', {})
         localStorage.removeItem('ADMIN_TOKEN')
         resolve()
       })

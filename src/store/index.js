@@ -31,7 +31,8 @@ const store = new Vuex.Store({
         return {
           // 将要存储的state中的值放在这里
           user: {
-            name: val.user.name
+            name: val.user.name,
+            roles: val.user.roles
           }
         }
       }

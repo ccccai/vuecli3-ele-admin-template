@@ -10,6 +10,7 @@ import '@/styles/index.scss' // global css
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/icons' // icon
 import '@/assets/mock'
+import '@/permission' // permission control
 
 import Api from '@/assets/http/apiUrl'
 import Request from '@/assets/http'

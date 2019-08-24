@@ -8,9 +8,15 @@ const Login = `${apiHost}login`
 const LoginByVin = `${apiHost}loginByVin`
 // 发送短信
 const SendSms = `${apiHost}sendSms`
+// 表格模拟数据
+const GetPermissionData = `${apiHost}permission`
+// 表格模拟数据
+const GetTableData = `${apiHost}table`
 
 export default {
   Login,
   LoginByVin,
-  SendSms
+  SendSms,
+  GetPermissionData,
+  GetTableData
 }

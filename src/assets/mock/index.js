@@ -14,8 +14,37 @@ const result = {
 // mock一组数据
 const loginData = () => {
   result.data = {
-    token: Random.string(10)
+    token: Random.string(10),
+    userInfo: {
+      name: 'cc',
+      roles: [
+        {
+          id: 2,
+          role: 'superAdmin'
+        }
+      ]
+    }
   }
+  return result
+}
+
+const tableData = () => {
+  const length = Random.integer(1, 20)
+  const data = {
+    totalCount: length,
+    currentPage: 1,
+    data: []
+  }
+  for (let i = 0; i < length; i++) {
+    data.data[i] = {
+      id: Random.id(),
+      name: Random.cname(),
+      age: Random.integer(1, 100),
+      gender: Random.cword('男女'),
+      phone: `1${Random.integer(1000000000, 9999999999)}`
+    }
+  }
+  result.data = data
   return result
 }
 
@@ -25,5 +54,27 @@ const smsData = () => {
   }
   return result
 }
+
+const permissionData = () => {
+  result.data = [
+    {
+      name: 'Table',
+      children: [
+        {
+          name: 'TableDemo',
+          auth: {
+            add: true,
+            check: true,
+            delete: true,
+            edit: true
+          }
+        }
+      ]
+    }
+  ]
+  return result
+}
 Mock.mock('/apiReplace/login', 'post', loginData)
 Mock.mock('/apiReplace/sendSms', 'post', smsData)
+Mock.mock('/apiReplace/permission', 'post', permissionData)
+Mock.mock('/apiReplace/table', 'post', tableData)
