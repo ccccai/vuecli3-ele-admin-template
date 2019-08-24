@@ -1,0 +1,59 @@
+
+@import '~@/styles/mixin';
+.el-card {
+  border-radius: 8px;
+}
+
+.pagination {
+  overflow: auto;
+  text-align: right;
+  padding: 20px 0;
+  margin: 0 10px;
+}
+
+.list-content {
+  background: #fff;
+  border: 0;
+  .el-card__body {
+    padding: 0;
+    .el-table thead th {
+      background: #e6e6e6;
+      color: #606266;
+    }
+  }
+  .table-content {
+    border-radius: 8px;
+    .table-img {
+      width: 120px;
+      height: 120px;
+    }
+    .icon-btn {
+      cursor: pointer;
+    }
+    .operation {
+      text-overflow: unset;
+      .cell {
+        white-space: nowrap;
+        text-overflow: unset;
+      }
+      .item {
+        color: #409EFF;
+        margin-right: 20px;
+        &:last-child {
+          margin-right: 0px;
+        }
+        &:hover {
+          color: #606266;
+        }
+      }
+      .item-gray {
+        cursor: default;
+        color: #aaa;
+        margin-right: 20px;
+        &:last-child {
+          margin-right: 0px;
+        }
+      }
+    }
+  }
+}

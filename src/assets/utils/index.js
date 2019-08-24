@@ -57,57 +57,8 @@ export function isNotEmpty(obj) {
       }
     }
   } catch (e) {
-    console.log(e)
     return false
   }
-}
-
-// 组装菜单
-export function formattingPermission(data) {
-  let tmpData = []
-  const defaultExpanded = []
-  if (Object.prototype.toString.call(data) !== '[object Array]') {
-    return { defaultExpanded: defaultExpanded, data: tmpData }
-  }
-  const level1 = [], level2 = [], level3 = []
-  // 组装数据，拼接成elementUI树形控件支持的形式
-  data.forEach(item => {
-    switch (item.level) {
-      case 1 :
-        level1.push({...item, children: []})
-        defaultExpanded.push(item.id) // 默认全部一级菜单是展开状态
-        break
-      case 2:
-        level2.push({...item, children: []})
-        break
-      case 3:
-        level3.push({...item})
-        break
-    }
-  })
-
-  level3.forEach((lastLevelItem, index) => {
-    level2.forEach((secondLevelItem, i) => {
-      if (secondLevelItem.id === lastLevelItem.parentId) {
-        level2[i].children.push({
-          ...lastLevelItem
-        })
-      }
-    })
-  })
-
-  level2.forEach((secondLevelItem, index) => {
-    level1.forEach((firstLevelItem, i) => {
-      if (firstLevelItem.id === secondLevelItem.parentId) {
-        level1[i].children.push({
-          ...secondLevelItem
-        })
-      }
-    })
-  })
-
-  tmpData = [...level1]
-  return { defaultExpanded: defaultExpanded, data: tmpData }
 }
 
 // 将数组装换成字符串类型

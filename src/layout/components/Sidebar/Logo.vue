@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar-logo-container" :class="{'collapse':collapse}" title="回到主页">
     <transition name="sidebarLogoFade">
-      <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/">
+      <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/home">
         <img v-if="logo" src="@/assets/images/logo.png" class="sidebar-logo collapse-logo">
         <!-- <h1 v-else class="sidebar-title">
           {{ title }}
@@ -10,7 +10,7 @@
           <span>{{ title }}</span>
         </div>
       </router-link>
-      <router-link v-else key="expand" class="sidebar-logo-link" to="/">
+      <router-link v-else key="expand" class="sidebar-logo-link" to="/home">
         <img v-if="logo" src="@/assets/images/logo.png" class="sidebar-logo">
         <!-- <h1 class="sidebar-title">
           {{ title }}

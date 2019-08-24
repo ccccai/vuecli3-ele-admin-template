@@ -25,5 +25,26 @@ const smsData = () => {
   }
   return result
 }
+
+const tableData = () => {
+  const length = Random.integer(1, 20)
+  const data = {
+    totalCount: length,
+    currentPage: 1,
+    data: []
+  }
+  for (let i = 0; i < length; i++) {
+    data.data[i] = {
+      id: Random.id(),
+      name: Random.cname(),
+      age: Random.integer(1, 100),
+      gender: Random.cword('男女'),
+      phone: `1${Random.integer(1000000000, 9999999999)}`
+    }
+  }
+  result.data = data
+  return result
+}
 Mock.mock('/apiReplace/login', 'post', loginData)
 Mock.mock('/apiReplace/sendSms', 'post', smsData)
+Mock.mock('/apiReplace/table', 'post', tableData)
