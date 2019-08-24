@@ -89,6 +89,7 @@ export default {
         this.$request.httpRequest({
           method: 'post',
           url: this.API.GetTableData,
+          noLoading: true,
           params: {
             page: this.currentPage,
             limit: this.pageSize
