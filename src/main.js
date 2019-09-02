@@ -11,6 +11,11 @@ import 'element-ui/lib/theme-chalk/index.css'
 import '@/icons' // icon
 import '@/assets/mock'
 import '@/permission' // permission control
+import 'lib-flexible' // 使用lib-flexible来解决移动端适配
+// 解决低版本浏览器不支持promise问题
+import 'babel-polyfill'
+import Es6Promise from 'es6-promise'
+Es6Promise.polyfill()
 
 import Api from '@/assets/http/apiUrl'
 import Request from '@/assets/http'
