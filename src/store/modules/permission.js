@@ -1,3 +1,9 @@
+/**
+ * constantRoutes 常规路由，不需要权限即可访问
+ * asyncRoutes 需要访问权限的路由
+ * notFoundRoutes 404路由
+ * resetRouter 重置路由的方法
+ */
 import { asyncRoutes, constantRoutes, notFoundRoutes, resetRouter } from '@/router'
 import API from '@/assets/http/apiUrl'
 import Request from '@/assets/http'
