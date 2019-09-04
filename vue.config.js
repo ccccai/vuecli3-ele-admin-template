@@ -21,6 +21,7 @@ module.exports = {
       },
       postcss: {
         plugins: [
+          require('autoprefixer')({}),
           require('postcss-plugin-px2rem')({
             rootValue: 54, // 换算基数，默认100，自行根据效果调整。
             mediaQuery: false, // （布尔值）允许在媒体查询中转换px。

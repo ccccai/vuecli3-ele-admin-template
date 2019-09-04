@@ -49,7 +49,7 @@ export const constantRoutes = [
     hidden: true,
     children: [
       {
-        path: 'home',
+        path: '/home',
         name: 'Home',
         component: resolve => void require(['@/views/homepage/index'], resolve),
         meta: {

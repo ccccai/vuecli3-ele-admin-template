@@ -96,8 +96,8 @@ export default {
 <style lang="scss">
 @import '~@/styles/mixin';
 .openSidebar .el-submenu__title {
-  @include flexBox;
-  @include alignCenter;
+  display: flex;
+  align-items: center;
   padding-left: 0;
   span {
     line-height: 20px;

@@ -281,9 +281,9 @@ $light_gray: rgb(18, 29, 37);
     margin: 120px auto;
     .reset-card {
       .reset-tab {
-        @include flexBox;
-        @include justifyAround;
-        @include alignCenter;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
         padding: 0 20px 20px;
         .tab-item {
           font-size: 16px;
@@ -308,8 +308,8 @@ $light_gray: rgb(18, 29, 37);
         }
       }
       .to-login {
-        @include flexBox;
-        @include justifyEnd;
+        display: flex;
+        justify-content: flex-end;
         font-size: 14px;
         margin-top: 8px;
         .btn {
