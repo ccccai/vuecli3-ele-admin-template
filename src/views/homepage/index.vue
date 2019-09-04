@@ -8,12 +8,14 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import "~@/styles/mixin.scss";
+@import "~@/styles/mixin";
 .home {
+  position: absolute;
   height: 100%;
-  @include flexBox;
-  @include alignCenter;
-  @include justifyCenter;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .svg-icon {
     font-size: 70px;
   }
