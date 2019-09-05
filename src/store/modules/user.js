@@ -41,7 +41,7 @@ const user = {
     ResetToken({ commit }) {
       return new Promise(resolve => {
         commit('SET_TOKEN', '')
-        commit('SEI_NAME', '')
+        commit('SET_NAME', '')
         localStorage.removeItem('ADMIN_TOKEN')
         resolve()
       })
