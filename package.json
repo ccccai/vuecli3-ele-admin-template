@@ -34,7 +34,7 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-vue": "^5.0.0",
     "mockjs": "^1.0.1-beta3",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.13.1",
     "postcss-plugin-px2rem": "^0.8.1",
     "prettier": "^1.18.2",
     "px2rem-loader": "^0.1.9",
